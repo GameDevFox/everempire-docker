@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  server:
+    build: ./everempire-server
+    image: everempire-server
+    ports:
+      - 80:80
+
+  webapp:
+    build: ../everempire-webapp
+    image: everempire-webapp
+#    ports:
+#      - 8080:80
+    env_file:
+      - env/webapp.env
+
+  api:
+    build: ../everempire-api
+    image: everempire-api
+#    ports:
+#      - 9292:9292
+    env_file:
+      - env/api.env
+
+  genesis:
+    build: ../everempire-genesis
+    image: everempire-genesis
+    ports:
+      - 1127:1127
+
+  db:
+    build: ./everempire-db
+    image: everempire-db
+#    ports:
+#      - 5432:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
