@@ -3,13 +3,13 @@ version: '3'
 services:
   server:
     build: ./everempire-server
-    image: everempire-server
+    image: ${IMAGE_PREFIX}everempire-server
     ports:
       - 80:80
 
   webapp:
     build: ../everempire-webapp
-    image: everempire-webapp
+    image: ${IMAGE_PREFIX}everempire-webapp
 #    ports:
 #      - 8080:80
     env_file:
@@ -17,7 +17,7 @@ services:
 
   api:
     build: ../everempire-api
-    image: everempire-api
+    image: ${IMAGE_PREFIX}everempire-api
 #    ports:
 #      - 9292:9292
     env_file:
@@ -25,13 +25,13 @@ services:
 
   genesis:
     build: ../everempire-genesis
-    image: everempire-genesis
+    image: ${IMAGE_PREFIX}everempire-genesis
     ports:
       - 1127:1127
 
   db:
     build: ./everempire-db
-    image: everempire-db
+    image: ${IMAGE_PREFIX}everempire-db
 #    ports:
 #      - 5432:5432
     volumes:
