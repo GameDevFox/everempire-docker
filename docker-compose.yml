@@ -6,6 +6,9 @@ services:
     image: ${IMAGE_PREFIX}everempire-server
     ports:
       - 80:80
+      - 443:443
+    volumes:
+      - ${CERT_PATH}:/certs
 
   webapp:
     build: ../everempire-webapp
@@ -28,6 +31,10 @@ services:
     image: ${IMAGE_PREFIX}everempire-genesis
     ports:
       - 1127:1127
+    volumes:
+      - ${CERT_PATH}:/certs
+    env_file:
+      - env/genesis.env
 
   db:
     build: ./everempire-db
