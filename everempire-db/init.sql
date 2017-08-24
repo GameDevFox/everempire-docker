@@ -19,8 +19,7 @@ CREATE TABLE token (
   user_id INT NOT NULL,
   token VARCHAR(64) NOT NULL,
   created_at TIMESTAMP WITH TIME ZONE NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES "user"(id),
-  UNIQUE (user_id)
+  FOREIGN KEY (user_id) REFERENCES "user"(id)
 );
 
 CREATE TABLE world (
